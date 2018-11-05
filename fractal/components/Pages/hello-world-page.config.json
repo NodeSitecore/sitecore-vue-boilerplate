@@ -1,0 +1,9 @@
+{
+  "context": {
+    "Image": {
+      "Src": "/themes/Common/images/logo.png",
+      "Alt": "Sitecore Vue Logo"
+    },
+    "Description": "Welcome to Your Sitecore Vue.js App"
+  }
+}

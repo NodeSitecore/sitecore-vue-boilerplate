@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js no-touch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#009ee2"/>
+
+  <style>
+    [v-cloak] {
+      display: none
+    }
+
+    .no-js img[v-srcset] {
+      display: none;
+    }
+  </style>
+  {{#each _config.project.styles}}
+    <link rel="preload" href="{{ path this }}" as="style">
+  {{/each}}
+  {{#each _config.project.vendors}}
+    <link rel="preload" href="{{ path this }}" as="script">
+  {{/each}}
+
+  {{#each _config.project.bundles}}
+    <link rel="preload" href="{{ path this }}" as="script">
+  {{/each}}
+
+
+  {{#each _config.project.styles}}
+    <link rel='stylesheet' href="{{ path this }}">
+  {{/each}}
+
+  <title>Preview</title>
+
+</head>
+<body class="fractal-preview">
+<script>
+  var html = document.querySelector('html');
+  html.classList.remove('no-js');
+  if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+    html.classList.remove('no-touch');
+    html.classList.add('has-touch');
+  }
+</script>
+
+<div id="main-container" key="main_container_key">
+  {{{ yield }}}
+</div>
+
+{{#each _config.project.vendors}}
+  <script src="{{ path this }}"></script>
+{{/each}}
+
+{{#each _config.project.bundles}}
+  <script src="{{ path this }}"></script>
+{{/each}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-scss.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.14.0/components/prism-javascript.min.js"></script>
+</body>
+</html>

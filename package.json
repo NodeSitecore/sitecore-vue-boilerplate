@@ -1,0 +1,86 @@
+{
+  "name": "@node-sitecore/vue-cli-boilerplate",
+  "version": "1.0.0",
+  "description": "Node sitecore boilerplate",
+  "main": "./src/Project/Common/code/Scripts/common.js",
+  "scripts": {
+    "postinstall": "jest --clearCache",
+    "build": "npm run test && npm run cli:build",
+    "build:fractal": "nsc fractal build -e \"npm run cli:build\"",
+    "develop": "nsc fractal serve -e \"npm run cli:serve\"",
+    "lint:scripts": "npm run cli:lint",
+    "lint:styles": "stylelint \"src/{Feature,Foundation,Project}/**/*.scss\" --fix",
+    "test": "npm run cli:lint && npm run cli:test",
+    "test:watch": "npm run cli:test:watch",
+    "cli:serve": "vue-cli-service serve",
+    "cli:build": "vue-cli-service build --mode production",
+    "cli:watch": "vue-cli-service build --watch",
+    "cli:test": "vue-cli-service test:unit --coverage --verbose --runInBand",
+    "cli:test:watch": "vue-cli-service test:unit --watch --verbose --runInBand",
+    "cli:lint": "vue-cli-service lint",
+    "nuget:restore": "nsc restore",
+    "sc:clean:config": "nsc build --targets Clean",
+    "sc:publish": "nsc publish solution && npm run sc:clean:config",
+    "sc:publish:views": "nsc publish views",
+    "sc:publish:config": "nsc publish config",
+    "sc:watch:views": "nsc watch views",
+    "sc:settings": "nsc inspect"
+  },
+  "dependencies": {
+    "@node-sitecore/keysitecore": "^3.8.0",
+    "core-js": "^2.5.5",
+    "register-service-worker": "^1.0.0",
+    "vue": "2.5.17"
+  },
+  "devDependencies": {
+    "@node-sitecore/cli": "^3.8.0",
+    "@node-sitecore/cli-plugin-fractal": "^3.8.0",
+    "@node-sitecore/cli-plugin-vue": "^3.8.0",
+    "@node-sitecore/config": "^3.8.0",
+    "@node-sitecore/eslint-config": "^1.0.0",
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-eslint": "^3.1.1",
+    "@vue/cli-plugin-pwa": "^3.1.1",
+    "@vue/cli-plugin-unit-jest": "^3.1.1",
+    "@vue/cli-service": "^3.1.1",
+    "@vue/test-utils": "^1.0.0-beta.24",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "jasmine-reporters": "2.3.0",
+    "jest-junit": "^5.1.0",
+    "lint-staged": "^7.2.2",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-svg-loader": "^0.11.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "post-commit": "git update-index --again",
+    "pre-push": ""
+  },
+  "lint-staged": {
+    "*.scss": [
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.{vue,js}": [
+      "npm run lint:scripts",
+      "git add"
+    ]
+  },
+  "jest-junit": {
+    "suiteName": "jest tests",
+    "output": "./reports/fe-junit.xml",
+    "classNameTemplate": "{classname}-{title}",
+    "titleTemplate": "{classname}-{title}",
+    "ancestorSeparator": " › ",
+    "usePathForSuiteName": "true"
+  },
+  "engines": {
+    "node": ">=9.4.0"
+  }
+}

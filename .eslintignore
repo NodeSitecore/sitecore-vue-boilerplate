@@ -1,0 +1,8 @@
+node_modules/
+gulpfile.js
+jest.config.js
+vue.config.js
+src/Project/Hotfixes
+src/**/obj
+src/**/bin
+build/

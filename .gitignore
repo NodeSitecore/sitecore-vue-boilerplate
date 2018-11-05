@@ -1,0 +1,54 @@
+#Ignore IDE cached directories
+.vscode/
+.idea/
+.DS_Store
+
+#Ignore thumbnails created by Windows
+Thumbs.db
+#Ignore files built by Visual Studio
+*.obj
+*.exe
+!**/App_Data/**
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+files/
+obj/
+[Rr]elease*/
+_ReSharper*/
+[Tt]est[Rr]esult*
+.vs/
+#Nuget packages folder
+packages/
+
+#Ignore node
+node_modules/
+!**/App_Data/**
+.tmp
+coverage/
+reports/
+jsdoc/
+
+#own
+build/
+
+#configuration developers
+
+.development.nscrc
+.dev.nscrc

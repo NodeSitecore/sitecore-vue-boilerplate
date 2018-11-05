@@ -1,0 +1,105 @@
+{
+  "currentWebsite": "Common",
+  "siteUrl": "https://dev.local",
+  "instanceRoot": "<rootDir>/build",
+  "licensePath": "<instanceDir>/Data/license.xml",
+  "solutionName": "common",
+  "outputDir": "<rootDir>/build",
+  "authConfigFilePath": "<websiteDir>/App_Config/Include/zzzLast/zzz.LRP.Unicorn.Shared.Secret.config",
+  "srcDir": "<rootDir>/src",
+  "foundationDir": "<srcDir>/Foundation",
+  "foundationScriptsDir": "<foundationDir>/Core/code/Scripts",
+  "featureDir": "<srcDir>/Feature",
+  "projectDir": "<srcDir>/Project",
+  "currentProjectDir": "<projectDir>/<currentWebsite>/code",
+  "websiteDir": "<outputDir>/Website",
+  "websiteConfigDir": "<websiteDir>/App_Config",
+  "websiteViewsDir": "<websiteDir>/Views",
+  "websiteLibrariesDir": "<websiteDir>/bin",
+  "themesDir": "<websiteDir>/themes",
+  "buildToolsVersion": "15.0",
+  "buildConfiguration": "Debug",
+  "buildMaxCpuCount": 0,
+  "buildVerbosity": "minimal",
+  "buildNodeReuse": false,
+  "buildLogCommand": false,
+  "excludeFilesFromDeployment": [
+    "packages.config"
+  ],
+  "buildTargets": [
+    "Build"
+  ],
+  "buildPaths": [
+    "<solutionPath>"
+  ],
+  "buildPlatform": "Any CPU",
+  "buildProperties": {},
+  "publishTargets": [
+    "Build"
+  ],
+  "publishPaths": [
+    "<solutionPath>"
+  ],
+  "publishPlatform": "Any CPU",
+  "publishProperties": {
+    "DeployOnBuild": "true",
+    "DeployDefaultTarget": "WebPublish",
+    "WebPublishMethod": "FileSystem",
+    "DeleteExistingFiles": "false",
+    "PublishProfile": "local.pubxml",
+    "_FindDependencies": "false"
+  },
+  "vueCli": {
+    "outputDir": "<themesDir>/<currentWebsite>",
+    "scssMixinsPath": "<foundationDir>/Core/code/Styles/mixins/index.scss",
+    "baseUrl": {
+      "production": "/themes/<currentWebsite>/",
+      "development": "/"
+    },
+    "entries": [
+      {
+        "mode": "production",
+        "name": "bundle",
+        "paths": [
+          "<projectDir>/<currentWebsite>/code/Scripts/polyfills.js",
+          "<projectDir>/<currentWebsite>/code/Scripts/entry.production.js"
+        ]
+      },
+      {
+        "mode": "development",
+        "name": "bundle",
+        "paths": [
+          "<projectDir>/<currentWebsite>/code/Scripts/polyfills.js",
+          "<projectDir>/<currentWebsite>/code/Scripts/entry.development.js"
+        ]
+      }
+    ],
+    "alias": {
+      "@Foundation": "<foundationScriptsDir>",
+      "@Feature": "<featureDir>",
+      "@Project": "<projectDir>",
+      "@Themes": "<foundationDir>/Core/code/Styles/"
+    }
+  },
+  "fractal": {
+    "outputDir": "<outputDir>/Website/Fractal",
+    "staticsDir": "<rootDir>/fractal/public",
+    "componentsDir": "<rootDir>/fractal/components",
+    "mocksDir": "<rootDir>/fractal/mocks",
+    "mockResponseDelay": 1000,
+    "docsDir": "<rootDir>/fractal/docs",
+    "helpersDir": "<rootDir>/fractal/helpers",
+    "middlewaresDir": "<rootDir>/fractal/middlewares",
+    "proxyPatterns": [
+      "/*.js",
+      "/*.js.map",
+      "/fonts/**",
+      "/images/**",
+      "/img/**",
+      "/icons/**",
+      "/medias/**",
+      "/public/**"
+    ]
+  },
+  "type": "literal"
+}
