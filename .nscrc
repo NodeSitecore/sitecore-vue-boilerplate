@@ -51,7 +51,7 @@
   },
   "vueCli": {
     "outputDir": "<themesDir>/<currentWebsite>",
-    "scssMixinsPath": "<foundationDir>/Core/code/Styles/mixins/index.scss",
+    "scssMixinsPath": "<projectDir>/<currentWebsite>/code/Styles/mixins/index.scss",
     "baseUrl": {
       "production": "/themes/<currentWebsite>/",
       "development": "/"
@@ -78,7 +78,8 @@
       "@Foundation": "<foundationScriptsDir>",
       "@Feature": "<featureDir>",
       "@Project": "<projectDir>",
-      "@Themes": "<foundationDir>/Core/code/Styles/"
+      "@Themes": "<foundationDir>/Core/code/Styles/",
+      "@Mixins": "<foundationDir>/Core/code/Styles/mixins/index.scss"
     }
   },
   "fractal": {

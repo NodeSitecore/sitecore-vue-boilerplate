@@ -54,7 +54,7 @@ const vueConfig = {
       /manifest\.json$/
     ],
     workboxOptions: {
-      swDest: '../../service-worker.js',
+      swDest: `../../service-worker.${config.currentWebsite}.js`,
       runtimeCaching: []
     }
   },

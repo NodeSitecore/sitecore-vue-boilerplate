@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<package>
+    <metadata>
+        <id>base</id>
+        <version>1.0.0</version>
+        <authors></authors>
+        <owners></owners>
+        <!-- <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl> -->
+        <projectUrl>https://www.sitecore.com</projectUrl>
+        <!-- <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl> -->
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Base</description>
+        <copyright>Copyright 2018</copyright>
+        <tags>Base, Master</tags>
+        <releaseNotes>lrp</releaseNotes>
+    </metadata>
+    <files>
+        <file src="src\Project\LRP\code\**\*.TRANSF-*.config" target="\"/>
+        <file src="build\Website\App_Config\**\*.config" target="App_Config" exclude="**\*.DevSettings.config"/>
+        <file src="build\Website\App_Data\Dianoga Tools\**\*.*" target="\App_Data\Dianoga Tools"/>
+        <file src="build\Website\bin\*.dll" target="bin"/>
+        <file src="build\Website\Views\**\*" target="Views"/>
+        <file src="build\Website\Themes\**\*" target="Themes"/>
+        <file src="build\Website\Themes\**\manifest.json" target="Themes"/>
+        <file src="build\Website\Fractal\**\*" target="Fractal"/>
+        <file src="build\Website\Images\Components\**\*" target="Images\Components"/>
+        <file src="build\Website\Styles\Components\**\*" target="Styles\Components"/>
+        <file src="build\Website\Scripts\Plugins\**\*" target="Scripts\Plugins"/>
+        <file src="build\Website\service-worker.**.js"/>
+        <file src="build\Website\*.config"/>
+        <file src="configurations.ashx"/>
+        <file src="src\**\*.yml" target="App_Data\Unicorn"/>
+        <file src="license.xml" target="App_Data"/>
+    </files>
+</package>

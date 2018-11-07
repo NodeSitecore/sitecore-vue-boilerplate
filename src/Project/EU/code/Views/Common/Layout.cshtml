@@ -1,0 +1,85 @@
+@using Glass.Mapper
+@using Sitecore.Mvc
+@using Sitecore.Mvc.Helpers
+@using Sitecore.Web.UI.XslControls
+@using Sitecore.XA.Foundation.MarkupDecorator.Extensions
+@using Sitecore.XA.Foundation.SitecoreExtensions.Extensions
+@using Sitecore.XA.Foundation.Theming.Bundler
+
+@model RenderingModel
+
+@{
+  AssetLinks assetLinks = AssetLinksGenerator.GenerateLinks(new ThemesProvider());
+
+  // FE assets
+  var revId = System.Configuration.ConfigurationManager.AppSettings["xxxx"];
+  var styleUrl = "/themes/LRP/css/bundle.css?v=" + revId;
+  var vendorsUrl = "/themes/LRP/vendors.bundle.js?v=" + revId;
+  var bundleUrl = "/themes/LRP/bundle.js?v=" + revId;
+}
+
+<!DOCTYPE html>
+<html class="no-js no-touch" lang="@Model.Item.Language.Name">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#009ee2" />
+
+  <!-- Use modern browser feature to preload assets -->
+  <link rel="preload" href="@styleLink" as="style">
+  <link rel="preload" href="@vendorsUrl" as="script">
+  <link rel="preload" href="@bundleUrl" as="script">
+
+  <!-- PWA -->
+  <link rel="manifest" href="/themes/Common/manifest.json">
+
+  <!-- Hidden vue components -->
+  <style>
+    [v-cloak] { display: none }
+  </style>
+  @foreach (string style in assetLinks.Styles.Skip(1))
+  {
+  @Html.Raw(style)
+  }
+  @Html.Sxa().Placeholder("head")
+  <link rel="stylesheet" href="@styleLink">
+</head>
+<body itemscope
+      itemtype="http://schema.org/WebPage"
+      class="@(Sitecore.Context.PageMode.IsNormal ? "" : (Sitecore.Context.PageMode.IsExperienceEditor ? "pagemode-edit" : "pagemode-preview")) @Sitecore.Context.Site.Name" @Html.Sxa().Body().Decorate()>
+
+  <script>
+    var html = document.querySelector('html');
+    html.classList.remove('no-js');
+    if (('ontouchstart' in window) || window.DocumentTouch && document instanceof DocumentTouch) {
+      html.classList.remove('no-touch');
+      html.classList.add('has-touch');
+    }
+  </script>
+  @if (Sitecore.Context.PageMode.IsExperienceEditor)
+  {
+    @:<div id="wrapper">
+  }
+
+  <div id="main-container" key="main_container_key">
+
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+
+  </div>
+  @foreach (string script in assetLinks.Scripts)
+  {
+    @Html.Raw(script)
+  }
+  @if (Sitecore.Context.PageMode.IsExperienceEditor)
+  {
+    @:</div>
+  }
+  <script src="@vendorsUrl"></script>
+  <script src="@bundleUrl"></script>
+<!-- /#wrapper -->
+</body>
+</html>
